@@ -1,0 +1,202 @@
+{
+  "receipt_version": "0.1.1",
+  "constitution_version": "0.3.1",
+  "blueprint_id": "focusblock-coder-canary-android-20260503-014601",
+  "app_name": "FocusBlock",
+  "tier": 1,
+  "platforms": [
+    "android"
+  ],
+  "generated_at": "2026-05-03T02:00:58.703496+00:00",
+  "generation_pipeline_version": "1.0-skeleton",
+  "orchestrator_version": "0.1.1",
+  "agent_versions": {
+    "sequoia": "v2.6",
+    "scribe": "v1.1",
+    "scaffolder": "v0.2.3",
+    "coder": "v0.1.2"
+  },
+  "enforcement_summary": {
+    "total_gates_fired": 363,
+    "gates_passed": 363,
+    "gates_with_warnings": 0,
+    "gates_failed": 0,
+    "tier_completeness": "fully_satisfied"
+  },
+  "gate_categories": {
+    "blueprint_schema_validation": {
+      "fired": 1,
+      "passed": 1,
+      "schema_version": "blueprint.schema.json@v0.3.1"
+    },
+    "constitutional_pillar_traces": {
+      "fired": 10,
+      "passed": 10,
+      "pillars_referenced": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "per_file_scaffold_classification": {
+      "fired": 22,
+      "passed": 22
+    },
+    "coder_self_verification_checklist": {
+      "fired": 286,
+      "checklist_items_per_file": 13,
+      "files_processed": 22,
+      "passed": 286
+    },
+    "output_schema_validation": {
+      "fired": 22,
+      "passed": 22
+    },
+    "version_parity_checks": {
+      "fired": 22,
+      "passed": 22
+    },
+    "auditor_review": {
+      "fired": 0,
+      "passed": 0,
+      "auditor_version": ""
+    }
+  },
+  "constitutional_traces": [
+    {
+      "trace_id": "SEC-001",
+      "pillar": 1,
+      "pillar_name": "Security-by-Construction",
+      "control_text": "Security-by-Construction: manifest before code; Coder bound to implement every named control.",
+      "files_implementing": [
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/MainActivity.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/ui/timer/TimerScreen.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/ui/timer/TimerViewModel.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/security/SecurityConstants.kt"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-004",
+      "pillar": 7,
+      "pillar_name": "Last-Mile Compliance",
+      "control_text": "Last-Mile Compliance: privacy nutrition label declares Data Not Collected; Google Play Data Safety form mirrors.",
+      "files_implementing": [
+        "FocusBlock-Android/app/src/main/AndroidManifest.xml",
+        "FocusBlock-Android/data_safety_template.xml"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-005",
+      "pillar": 2,
+      "pillar_name": "Data Minimization & Privacy by Design",
+      "control_text": "Data Minimization & Privacy by Design: declared retention rules per data type; system backup opt-out so uninstall guarantees data deletion.",
+      "files_implementing": [
+        "FocusBlock-Android/app/src/main/res/xml/data_extraction_rules.xml",
+        "FocusBlock-Android/app/src/main/res/xml/backup_rules.xml"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-007",
+      "pillar": 1,
+      "pillar_name": "Security-by-Construction",
+      "control_text": "Security-by-Construction: settings inputs are bounded numeric steppers; duration changes apply to the next session, not the running one.",
+      "files_implementing": [
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/ui/settings/SettingsScreen.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/ui/settings/SettingsViewModel.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/security/InputValidation.kt"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-002",
+      "pillar": 2,
+      "pillar_name": "Data Minimization & Privacy by Design",
+      "control_text": "Data Minimization & Privacy by Design: collect only what the feature requires; storage is local-only with declared retention.",
+      "files_implementing": [
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/ui/history/HistoryScreen.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/ui/history/HistoryViewModel.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/data/SessionRecord.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/services/SessionRepository.kt",
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/security/ScreenProtection.kt"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-008",
+      "pillar": 6,
+      "pillar_name": "Traceability",
+      "control_text": "Traceability: bundled audio asset is part of the build artifact; trace ID anchors the asset to the manifest.",
+      "files_implementing": [
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/services/AudioHapticService.kt"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-003",
+      "pillar": 6,
+      "pillar_name": "Traceability",
+      "control_text": "Traceability: feature carries trace ID; file headers reference it.",
+      "files_implementing": [
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/security/_traces.json"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-006",
+      "pillar": 2,
+      "pillar_name": "Data Minimization & Privacy by Design",
+      "control_text": "Data Minimization & Privacy by Design: notifications are local-only; no push, no server, no recipient other than the device owner.",
+      "files_implementing": [
+        "FocusBlock-Android/app/src/main/java/com/focusblock/app/ui/permissions/PermissionRationale.kt"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-009",
+      "pillar": 3,
+      "pillar_name": "Cryptography & Dependency Standards",
+      "control_text": "Cryptography & Dependency Standards: zero third-party SDKs in V1; mandatory pre-submission dependency audit refuses to ship if any new dependency in the tree touches the network.",
+      "files_implementing": [
+        "FocusBlock-Android/app/build.gradle.kts"
+      ],
+      "external_standards_satisfied": []
+    },
+    {
+      "trace_id": "SEC-010",
+      "pillar": 8,
+      "pillar_name": "Incident Response & Disclosure",
+      "control_text": "Incident Response & Disclosure: solo-developer single-user posture — bug fix, ship update, document in release notes; no PII to breach, no regulator path.",
+      "files_implementing": [
+        "FocusBlock-Android/README.md"
+      ],
+      "external_standards_satisfied": []
+    }
+  ],
+  "external_standards_summary": {
+    "owasp_masvs_controls_satisfied": [],
+    "owasp_mastg_test_cases_addressed": [],
+    "fedramp_control_implementations_addressed": [],
+    "cmmc_practice_implementations_addressed": [],
+    "niap_sfr_attestation_templates_generated": []
+  },
+  "limitations": {
+    "validation_scope": "Receipt validates enforcement gates fired during generation. Does not certify runtime behavior, third-party dependency security, or post-generation modifications.",
+    "tier_scope": "This receipt is for Tier 1 (no PII, no auth, local-only) generation. Higher-tier features (E2EE, anti-debug, audit logging, NIAP attestation templates) were not invoked at this tier.",
+    "external_dependencies_unverified": [],
+    "non_claims_reference": "https://intrinsiccode.com/docs/receipts#non-claims"
+  },
+  "signature": {
+    "algorithm": "Ed25519",
+    "canonicalization": "RFC 8785 (JCS)",
+    "public_key_id": "intrinsiccode-prod-2026-Q2",
+    "signed_payload_hash": "sha256:ec5928e1b8e996729b75c5ae3f6f41310fbe2269981f72585a623cf26fb50c2a",
+    "signature": "B0ewAq1VBL7rdppoX16USEzb7YrG2OrkrxOWV+DNdlro0qYCe+at1BSVS5hROBvW3EZ1LO2JD7uBbsewdbsFBg=="
+  }
+}

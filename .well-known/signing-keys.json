@@ -1,0 +1,24 @@
+{
+  "manifest_version": "1.0",
+  "regenerated_at": "2026-05-03T11:34:29Z",
+  "keys": [
+    {
+      "public_key_id": "intrinsiccode-test-2026-Q2",
+      "algorithm": "Ed25519",
+      "pem_format": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAR5G/QRBcjw8Wekdd6aHj6ZkA+u7l0jEyxmBLqrYHngg=\n-----END PUBLIC KEY-----\n",
+      "role": "test",
+      "issued_at": "2026-05-03T00:00:00Z",
+      "rotated_at": null,
+      "notes": "Test keypair per Validation Receipt v0.1.1 §5.1. Used during the test-keypair phase to round-trip sign+verify against the canonicalization layer. Receipts signed with this key carry algorithm: Ed25519-test. Test-keypair Receipts can be invalidated en masse if signing process bugs are discovered before production keypair takeover."
+    },
+    {
+      "public_key_id": "intrinsiccode-prod-2026-Q2",
+      "algorithm": "Ed25519",
+      "pem_format": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA6fBAMtZ81mPN1GsbEgMYy5aeWpIOPDXIslKo55uSSWk=\n-----END PUBLIC KEY-----\n",
+      "role": "production",
+      "issued_at": "2026-05-03T00:00:00Z",
+      "rotated_at": null,
+      "notes": "Production keypair per Validation Receipt v0.1.1 §5.1. Receipts signed with this key carry algorithm: Ed25519. Private key is stored OUT OF REPO at ~/.intrinsic-code/keys/intrinsiccode-prod-2026-Q2.private (user-only ACL via NTFS profile-dir defaults on Windows). Annual rotation cadence per §5.1; older keys retained in this manifest with rotated_at set so historical Receipts remain verifiable."
+    }
+  ]
+}

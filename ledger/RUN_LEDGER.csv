@@ -1,0 +1,30 @@
+id,date,fixture,tier,outcome,apiCalls,tokensIn,tokensOut,cost,runtimeSec,notes
+focusblock-coder-canary-ios-20260503-040244,2026-05-03 04:02,unknown,1,success,20,17824,62548,2.453873,693,
+focusblock-coder-canary-android-20260503-014601,2026-05-03 01:46,unknown,1,success,23,1137300,78121,7.639525,897,
+focusblock-coder-canary-20260503-001920,2026-05-03 00:19,unknown,1,success,16,787621,54020,5.288605,1479,
+pomodoro-tier1-20260502T182202664828,2026-05-02 18:22,pomodoro_tier1.json,1,success,8,92208,39489,1.150095,550,
+pomodoro-tier1-20260502T175716113825,2026-05-02 17:57,pomodoro_tier1.json,1,success,10,149511,51409,1.628492,728,
+pomodoro-tier1-20260502T160852299095,2026-05-02 16:08,pomodoro_tier1.json,1,success,8,107176,19747,1.029555,320,Post-Phase-3 canary 5/5: Constitution v0.3.1 cutover + Decision Table v1.0 + Scribe v1.1. Lock + Scribe synthesis clean. Tier 1 classified per Decision Table v1.0 row 11.
+pomodoro-tier1-20260502T155717752436,2026-05-02 15:57,pomodoro_tier1.json,1,success,8,113786,18830,1.03968,309,Post-Phase-3 canary 4/5: lock + validate clean. Decision Table v1.0 → Tier 1.
+pomodoro-tier1-20260502T153959980672,2026-05-02 15:39,pomodoro_tier1.json,1,success,8,112885,18146,1.018075,297,Post-Phase-3 canary 3/5: lock + validate clean. Decision Table v1.0 → Tier 1.
+pomodoro-tier1-20260502T153205064933,2026-05-02 15:32,pomodoro_tier1.json,1,success,8,108973,18723,1.01294,301,Post-Phase-3 canary 2/5: lock + validate clean. Decision Table v1.0 → Tier 1.
+pomodoro-tier1-20260502T152301865633,2026-05-02 15:23,pomodoro_tier1.json,1,success,9,120532,18150,1.05641,305,Post-Phase-3 canary 1/5: first run after commits ebd0c88 + bc725d2 + e909827 + d4dac9c. Lock + Scribe synthesis clean. Tier 1 classified per Decision Table v1.0 row 11.
+pomodoro-tier1-20260501T103818006863,2026-05-01 10:38,pomodoro_tier1.json,1,success,9,114185,18235,1.0268,297,
+pomodoro-tier1-20260501T103250881379,2026-05-01 10:32,pomodoro_tier1.json,1,success,8,102347,18773,0.98106,303,
+pomodoro-tier1-20260501T102716168522,2026-05-01 10:27,pomodoro_tier1.json,1,success,9,116274,17301,1.013895,284,
+pomodoro-tier1-20260501T101807682172,2026-05-01 10:18,pomodoro_tier1.json,,lock_refused,7,66831,3652,0.425455,81,
+pomodoro-tier1-20260501T101349325201,2026-05-01 10:13,pomodoro_tier1.json,1,success,8,91908,13051,0.785815,234,
+pomodoro-tier1-20260501T100442955638,2026-05-01 10:04,pomodoro_tier1.json,,lock_refused,7,60386,3461,0.388455,79,
+pomodoro-tier1-20260501T095819091648,2026-05-01 09:58,pomodoro_tier1.json,1,success,9,112263,22036,1.112215,363,
+pomodoro-tier1-20260501T095027249491,2026-05-01 09:50,pomodoro_tier1.json,1,success,9,106471,19111,1.01013,328,
+pomodoro-tier1-20260501T094506819095,2026-05-01 09:45,pomodoro_tier1.json,1,success,9,107756,16978,0.96323,296,
+pomodoro-tier1-20260501T094319296519,2026-05-01 09:43,pomodoro_tier1.json,,lock_refused,7,58102,2698,0.35796,65,
+pomodoro-tier1-20260501T084933915310,2026-05-01 08:49,pomodoro_tier1.json,,lock_refused,7,60476,3530,0.39063,79,
+pomodoro-tier1-20260501T082938254776,2026-05-01 08:29,pomodoro_tier1.json,,lock_refused,7,62473,3931,0.41064,85,
+pomodoro-tier1-20260501T082149401696,2026-05-01 08:21,pomodoro_tier1.json,1,success,7,68489,10195,0.59732,179,
+pomodoro-tier1-20260501T073323985146,2026-05-01 07:33,pomodoro_tier1.json,,lock_refused,7,51999,3528,0.348195,72,
+pomodoro-tier1-20260501T071611648536,2026-05-01 07:16,pomodoro_tier1.json,1,success,9,91155,15960,0.854775,261,
+pomodoro-tier1-20260501T070721811476,2026-05-01 07:07,pomodoro_tier1.json,,lock_refused,6,41835,3201,0.2892,73,
+pomodoro-tier1-20260501T023747518824,2026-05-01 02:37,unknown,,validation_failed,6,0,0,0.0,53,Full 8-turn conversation completed cleanly; lock detected; validation_failed because audit-mode wiring gap meant Sequoia didn't emit blueprint JSON. Resolution: building production Architect Agent to produce JSON downstream rather than patching audit mode.
+pomodoro-tier1-20260501T022511682399,2026-05-01 02:25,unknown,,incomplete,8,0,0,0.0,87,Sequoia held the line on 4 product follow-up questions; behaved exactly as v2.5.1 prompt designed; fixture refined to answer them proactively
+pomodoro-tier1,2026-05-01 02:21,unknown,,incomplete,3,0,0,0.0,19,UTF-8 stdout crash on Windows cp1252 codec — fixed in run_sequoia.py with io.TextIOWrapper UTF-8 wrapping

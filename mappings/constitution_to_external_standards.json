@@ -1,0 +1,610 @@
+{
+  "$schema": "./mapping_file.schema.json",
+  "mapping_file_version": "1.1",
+  "constitution_version": "0.4",
+  "generated_at": "2026-05-02T00:00:00Z",
+  "audit_status": "pre_audit",
+  "mapping_authority_default": "intrinsic_code_internal_review",
+  "audit_commitment_reference": "constitution-v0-4 §5.7",
+  "pre_audit_disclaimer": "External standards mappings reflect Intrinsic Code's internal review of public control text and have not yet been third-party audited. Customers using these mappings in regulated procurement should validate independently.",
+  "changelog": [
+    {
+      "version": "1.1",
+      "date": "2026-05-02",
+      "changes": "Grok content audit (9.3/10) fixes: SEC-PILLAR-3-CRYPTO-PRIMITIVES FCS_CKM.1 rationale scoped to key generation specifically; SEC-PILLAR-3-SDK-PROVENANCE rationale strengthened with named supply-chain attack pattern; SEC-PILLAR-5-ANTI-DEBUG adds MASVS-RESILIENCE-2 mapping; SEC-PILLAR-5-JTAG-DISABLEMENT citation fixed to acknowledge PP inheritance from Mobile Device Fundamentals into Application Software contexts."
+    },
+    {
+      "version": "1.0",
+      "date": "2026-05-02",
+      "changes": "Initial release. 27 mapping entries across 8 pillars addressing 14 distinct external standard documents. Ships with Constitution v0.4."
+    }
+  ],
+  "entries": [
+    {
+      "trace_id": "SEC-PILLAR-1-MANIFEST-FIRST",
+      "pillar": 1,
+      "pillar_name": "Security-by-Construction",
+      "control_summary": "security_manifest must be generated and locked before code generation begins. All downstream agents are bound to it.",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "ISO/IEC 27034-1:2011",
+          "control": "Application Security Management Process (ASMP) — Organizational Normative Framework",
+          "rationale": "ISO/IEC 27034-1 requires application security to be addressed by a structured process beginning with explicit security requirements before implementation. The security_manifest is Intrinsic Code's instantiation of this Organizational Normative Framework artifact at the per-app level.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIST SP 800-163 Rev 1",
+          "control": "Section 4.1 — App Vetting Process",
+          "rationale": "NIST SP 800-163 mandates a structured vetting process applied before app deployment. Pillar 1's manifest-first principle places the equivalent vetting upstream of generation, eliminating the post-hoc inspection problem the publication addresses.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-ARCH",
+          "rationale": "MASVS-ARCH requires application security architecture be defined explicitly and reviewed before development. The locked security_manifest IS that explicit, reviewed architecture artifact.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-2-RETENTION-POLICY",
+      "pillar": 2,
+      "pillar_name": "Data Minimization & Privacy by Design",
+      "control_summary": "Explicit retention policies for every data type. Local-first bias where possible.",
+      "applicable_tiers": [2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-STORAGE-1",
+          "rationale": "MASVS-STORAGE-1 requires that storage of sensitive data be needs-justified and minimized. Per-data-type retention policies in the manifest enforce this requirement at the design layer.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-PRIVACY-1",
+          "rationale": "MASVS-PRIVACY-1 requires that the app minimize access to sensitive data. Local-first bias and explicit retention policies are the architectural realization of this requirement.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-2-EXTERNAL-PROCESSOR-DECLARATION",
+      "pillar": 2,
+      "pillar_name": "Data Minimization & Privacy by Design",
+      "control_summary": "Any external processor declared with data shared, justification, consent path, and processor's retention policy.",
+      "applicable_tiers": [2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "Apple App Store Review Guidelines 2025",
+          "control": "5.1.1 — Data Collection and Storage",
+          "rationale": "Apple Guideline 5.1.1 requires apps to obtain user consent before collecting data and to clearly disclose third-party processors. Manifest-level external processor declaration produces the audit trail this guideline requires for app review.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "Google Play Data Safety (2025-2026)",
+          "control": "Data Safety Section disclosure requirements",
+          "rationale": "Google Data Safety requires per-data-type disclosure of collection, sharing with third parties, retention, and security practices. The manifest's external processor declaration directly populates the Data Safety section content.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIST SP 800-163 Rev 1",
+          "control": "Section 5.2 — Privacy Considerations",
+          "rationale": "NIST SP 800-163 §5.2 requires explicit identification of data flows to third parties as part of app vetting. External processor declaration in the manifest provides this identification at design time.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-2-AI-TRANSPARENCY",
+      "pillar": 2,
+      "pillar_name": "Data Minimization & Privacy by Design",
+      "control_summary": "When app routes user data to third-party AI models: opt-out toggle, PII pruning, store disclosure, logged per Pillar 6.",
+      "applicable_tiers": [2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "Apple App Store Review Guidelines 2025",
+          "control": "5.1.2 — Data Use and Sharing",
+          "rationale": "Apple Guideline 5.1.2 (2025 update) requires explicit user consent and opt-out controls when user data is processed by AI/ML systems for purposes beyond direct app function. The Pillar 2 AI Transparency control is a direct implementation of this requirement.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "Google Play Data Safety (2025-2026)",
+          "control": "AI/ML Data Use Disclosure",
+          "rationale": "Google Data Safety section requires identification of AI/ML processing of user data. The manifest's named-AI-processor declaration with PII pruning logic produces the disclosure content this section requires.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-2-KEYBOARD-CACHE",
+      "pillar": 2,
+      "pillar_name": "Data Minimization & Privacy by Design",
+      "control_summary": "Keyboard cache disabled on input fields handling credentials, payment data, government IDs, or other sensitive PII.",
+      "applicable_tiers": [3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-STORAGE-2",
+          "rationale": "MASVS-STORAGE-2 requires that sensitive data not be leaked through unintended storage mechanisms. Keyboard caches are a documented unintended storage vector for credentials and PII; disabling them on sensitive fields directly addresses this requirement.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-3-CRYPTO-PRIMITIVES",
+      "pillar": 3,
+      "pillar_name": "Cryptography & Dependencies",
+      "control_summary": "Approved primitives only: AES-256-GCM, Argon2id, ChaCha20-Poly1305, Ed25519/X25519, SHA-256/512.",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-CRYPTO-1",
+          "rationale": "MASVS-CRYPTO-1 requires use of approved cryptographic primitives. Pillar 3's allowlist (AES-256-GCM, ChaCha20-Poly1305, Argon2id, Ed25519/X25519, SHA-256/SHA-512) is a strict subset of MASVS-CRYPTO-1's approved list.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIAP Protection Profile for Application Software v1.1",
+          "control": "FCS_COP.1 — Cryptographic Operation",
+          "rationale": "FCS_COP.1 requires named approved primitives for each cryptographic operation type. Pillar 3's allowlist satisfies this requirement when applied per-operation.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIAP Protection Profile for Application Software v1.1",
+          "control": "FCS_CKM.1 — Cryptographic Key Generation",
+          "rationale": "FCS_CKM.1 specifically requires that cryptographic keys be generated using approved algorithms at adequate key strengths. Pillar 3's inclusion of X25519/Ed25519 (asymmetric key generation) and Argon2id (symmetric key derivation) addresses the key-generation portion of the requirement; symmetric encryption operations (AES-256-GCM) are covered separately under FCS_COP.1.",
+          "mapping_version": "1.1",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-3-FORBIDDEN-PRIMITIVES",
+      "pillar": 3,
+      "pillar_name": "Cryptography & Dependencies",
+      "control_summary": "Forbidden primitives: MD5, SHA-1, RC4, DES, ECB mode.",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-CRYPTO-1",
+          "rationale": "MASVS-CRYPTO-1 explicitly forbids broken or deprecated cryptographic primitives. Pillar 3's blocklist (MD5, SHA-1, RC4, DES, ECB) covers the documented broken-primitive set referenced in MASVS-CRYPTO-1 guidance.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIST SP 800-131A Rev 2",
+          "control": "Disallowed Algorithms",
+          "rationale": "NIST SP 800-131A explicitly disallows MD5, SHA-1 (post-2030), RC4, DES, and ECB mode for security applications. Pillar 3's blocklist enforces this disallowed-algorithms list at generation time.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-3-SECURE-STORAGE",
+      "pillar": 3,
+      "pillar_name": "Cryptography & Dependencies",
+      "control_summary": "Platform secure storage mandatory for sensitive data (iOS Keychain + Secure Enclave; Android Keystore + Jetpack Security).",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-STORAGE-1",
+          "rationale": "MASVS-STORAGE-1 requires sensitive data be stored in platform-provided secure storage rather than application-managed storage. Pillar 3's mandatory use of iOS Keychain/Secure Enclave and Android Keystore/Jetpack Security is the direct platform-native implementation of this requirement.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIAP Protection Profile for Application Software v1.1",
+          "control": "FCS_STO_EXT.1 — Storage of Credentials",
+          "rationale": "FCS_STO_EXT.1 requires credentials be stored only in platform-provided secure storage. Pillar 3's mandate matches this control's platform-storage requirement.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-3-DEPENDENCY-PINNING",
+      "pillar": 3,
+      "pillar_name": "Cryptography & Dependencies",
+      "control_summary": "Dependency version pinning + reachability analysis required.",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "NIST SP 800-163 Rev 1",
+          "control": "Section 4.3 — Dependency Analysis",
+          "rationale": "NIST SP 800-163 §4.3 requires app vetting include analysis of third-party dependencies and their security posture. Version pinning + reachability analysis at the manifest level provides the auditable artifact this section requires.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-CODE-1",
+          "rationale": "MASVS-CODE-1 requires that the app uses up-to-date third-party libraries with known security postures. Version pinning prevents unintended dependency drift; reachability analysis prevents shipping unused-but-present vulnerable code paths.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-3-SDK-PROVENANCE",
+      "pillar": 3,
+      "pillar_name": "Cryptography & Dependencies",
+      "control_summary": "SDK provenance review. Provider security history, maintenance status, ownership, and reputation evaluated and recorded in security_manifest before adoption. Re-evaluation triggered on provider acquisition, ownership change, or unaddressed CVE.",
+      "applicable_tiers": [3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "NIST SP 800-163 Rev 1",
+          "control": "Section 4.3 — Supply Chain Vetting",
+          "rationale": "NIST SP 800-163 §4.3 explicitly addresses supply-chain risk including ownership changes and maintainer-handoff vulnerabilities. SDK provenance review with re-evaluation triggers directly addresses this class of risk. Re-evaluation on acquisition or unaddressed CVE directly mitigates documented maintainer-handoff attacks (event-stream npm package, 2018; Storybook addon supply-chain compromise, 2024) where a previously-trusted dependency became hostile after maintainer change.",
+          "mapping_version": "1.1",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-4-PHISHING-RESISTANT-AUTH",
+      "pillar": 4,
+      "pillar_name": "Authentication & Identity",
+      "control_summary": "Phishing-resistant authentication as default (Passkeys, platform biometrics).",
+      "applicable_tiers": [3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-AUTH-1",
+          "rationale": "MASVS-AUTH-1 requires the app uses authentication mechanisms appropriate to the data sensitivity. Pillar 4's passkey/biometric-default at Tier 3+ exceeds the baseline by defaulting to phishing-resistant methods.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIAP Protection Profile for Application Software v1.1",
+          "control": "FIA_UAU.5 — Multiple Authentication Mechanisms",
+          "rationale": "FIA_UAU.5 requires authentication mechanisms appropriate to the threat profile. Pillar 4's passkey-first architecture with biometric secondary directly satisfies this control's intent for high-assurance contexts.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "Apple App Store Review Guidelines 2025",
+          "control": "5.1.1 — Data Collection (Sign in with Apple requirement)",
+          "rationale": "Apple Guideline 5.1.1 requires Sign in with Apple be offered alongside other third-party social logins. Pillar 4's passkey-first architecture inherits Apple's identity layer where applicable, satisfying this requirement at the architectural level.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-4-IDENTITY-VERIFICATION",
+      "pillar": 4,
+      "pillar_name": "Authentication & Identity",
+      "control_summary": "Identity verification / liveness checks required only when the app explicitly claims to verify real-world identity.",
+      "applicable_tiers": [3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "NIST SP 800-63-3",
+          "control": "Identity Assurance Level 2 (IAL2)",
+          "rationale": "NIST SP 800-63-3 IAL2 defines requirements for remote identity verification including liveness detection. Pillar 4's identity verification + liveness check requirement aligns with IAL2 when the app explicitly claims identity-verification function.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-INPUT-VALIDATION",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Input validation and output encoding on every input boundary.",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-CODE-2",
+          "rationale": "MASVS-CODE-2 requires that the app validates and sanitizes all input from untrusted sources. Pillar 5's universal input-validation requirement is the direct enforcement.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-SCREEN-PROTECTION",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Screenshot protection on sensitive screens (FLAG_SECURE on Android; capture-mask on iOS).",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-PLATFORM-1",
+          "rationale": "MASVS-PLATFORM-1 requires the app uses platform features appropriately to protect sensitive data displayed in the UI. FLAG_SECURE on Android and capture-mask on iOS are the platform-native realizations of this requirement.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-ANTI-DEBUG",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Anti-debug measures in production builds.",
+      "applicable_tiers": [2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-RESILIENCE-1",
+          "rationale": "MASVS-RESILIENCE-1 requires the app implement anti-tampering and anti-debug measures appropriate to its threat profile. Pillar 5's Tier 2+ anti-debug requirement directly addresses this.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-RESILIENCE-2",
+          "rationale": "MASVS-RESILIENCE-2 requires the app verify runtime integrity and detect attached debuggers as part of runtime tamper detection. Anti-debug measures are the direct implementation of the debugger-detection portion of this control.",
+          "mapping_version": "1.1",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-UI-INTEGRITY",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "UI integrity protections: tapjacking prevention (iOS view-isolation, Android filterTouchesWhenObscured) and no system mimicry.",
+      "applicable_tiers": [2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-PLATFORM-2",
+          "rationale": "MASVS-PLATFORM-2 requires the app protects against UI-based attacks including overlay, tapjacking, and system-UI impersonation. Pillar 5's combined tapjacking-prevention and system-mimicry-prohibition satisfies this control.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "Apple App Store Review Guidelines 2025",
+          "control": "4.1 — Copycats / System Impersonation",
+          "rationale": "Apple Guideline 4.1 prohibits apps that impersonate system UI elements. Pillar 5's no-system-mimicry rule enforces this at the design layer rather than relying on app-review detection.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-WEBVIEW-DISCIPLINE",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "WebView discipline. Cookies and cache cleared on dismissal and session end. JavaScript bridges scoped to declared origins only.",
+      "applicable_tiers": [2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-PLATFORM-3",
+          "rationale": "MASVS-PLATFORM-3 requires WebView usage be sandboxed and not expose more capabilities than required. Cookie/cache clearing prevents data leakage; origin-scoped JS bridges prevent capability escalation. Combined, they satisfy this control's intent.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-JAILBREAK-DETECTION",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Jailbreak/root detection with declared response policy (terminate vs. degraded read-only mode).",
+      "applicable_tiers": [3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-RESILIENCE-2",
+          "rationale": "MASVS-RESILIENCE-2 requires the app detect compromised runtime environments and respond appropriately. Pillar 5's jailbreak/root detection with declared response policy directly addresses this.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-PLATFORM-ATTESTATION",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Platform integrity attestation (Apple App Attest, Google Play Integrity).",
+      "applicable_tiers": [3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-RESILIENCE-3",
+          "rationale": "MASVS-RESILIENCE-3 requires the app verify its own integrity at runtime. Apple App Attest and Google Play Integrity provide platform-attested verification that the app binary is unmodified, satisfying this control.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-CERTIFICATE-PINNING",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Mandatory certificate pinning on all backend calls.",
+      "applicable_tiers": [4, 5],
+      "external_standards": [
+        {
+          "standard": "OWASP MASVS 2.0",
+          "control": "MASVS-NETWORK-1",
+          "rationale": "MASVS-NETWORK-1 requires the app use TLS with certificate pinning where the threat model warrants it. Tier 4+ mandatory pinning addresses high-assurance threat models where compromised CAs are in scope.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-WX-MEMORY",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Memory safety enforced via W^X policy. No memory regions simultaneously writable and executable. Stack canaries, ASLR, DEP enabled in production builds.",
+      "applicable_tiers": [4, 5],
+      "external_standards": [
+        {
+          "standard": "NIAP Protection Profile for Application Software v1.1",
+          "control": "FPT_AEX_EXT.1 — Anti-Exploitation Protections",
+          "rationale": "FPT_AEX_EXT.1 mandates W^X enforcement, stack canaries, ASLR, and DEP. Pillar 5's Tier 4+ requirement is a direct implementation of this NIAP control.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-JTAG-DISABLEMENT",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Hardware debug interfaces (JTAG, SWD, equivalent platform debug ports) disabled in production builds. Verified at build time via signed manifest declaration.",
+      "applicable_tiers": [4, 5],
+      "external_standards": [
+        {
+          "standard": "NIAP Protection Profile for Application Software v1.1 (FPT_JTA inherited from Mobile Device Fundamentals PP v3.3)",
+          "control": "FPT_JTA — Hardware Debug Disablement",
+          "rationale": "FPT_JTA originates in the NIAP Protection Profile for Mobile Device Fundamentals v3.3 as a device-layer requirement that hardware debug interfaces be disabled in production deployments. The Application Software Protection Profile v1.1 inherits this requirement for high-assurance application contexts. Pillar 5's Tier 4+ requirement enforces it at the application-build layer with manifest-declared verification.",
+          "mapping_version": "1.1",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-5-AUDIT-LOGGING",
+      "pillar": 5,
+      "pillar_name": "Secure Architecture & Runtime",
+      "control_summary": "Tamper-evident, time-stamped audit logging of critical user actions. Logs cryptographically chained to detect modification.",
+      "applicable_tiers": [4, 5],
+      "external_standards": [
+        {
+          "standard": "ISO/IEC 25010:2011",
+          "control": "Security: Accountability and Non-repudiation",
+          "rationale": "ISO/IEC 25010 Security Accountability and Non-repudiation sub-characteristics require that user actions be attributable and modifications detectable. Cryptographically-chained tamper-evident logging is the architectural realization of these properties.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIAP Protection Profile for Application Software v1.1",
+          "control": "FAU_GEN.1 — Audit Data Generation",
+          "rationale": "FAU_GEN.1 requires audit logs be generated for security-relevant events. The Tier 4+ enumerated event types (authentication, privilege changes, data export, account modification, payment events) align with the security-relevant event taxonomy this control requires.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-6-FILE-TRACEABILITY",
+      "pillar": 6,
+      "pillar_name": "Traceability",
+      "control_summary": "Every feature in the blueprint and every generated source file must carry a security trace header referencing the specific pillar + standard.",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "ISO/IEC 25010:2011",
+          "control": "Maintainability: Modifiability and Analyzability",
+          "rationale": "ISO/IEC 25010 Maintainability sub-characteristics require code be analyzable and modifiable safely. Per-file trace headers binding each file to its constitutional and external-standard source make impact analysis explicit at the source level.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "NIST SP 800-163 Rev 1",
+          "control": "Section 4.4 — Documentation Requirements",
+          "rationale": "NIST SP 800-163 §4.4 requires app vetting include documentation of security-relevant decisions. Per-file trace headers produce this documentation as a side effect of generation rather than as a separate manual artifact.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-7-LAST-MILE-COMPLIANCE",
+      "pillar": 7,
+      "pillar_name": "Last-Mile Compliance",
+      "control_summary": "Platform store requirements (Sign in with Apple when applicable, in-app account deletion, Restore Purchases, Privacy Nutrition Label / Data Safety section, etc.).",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "Apple App Store Review Guidelines 2025",
+          "control": "Multiple — Account Management, IAP, Privacy",
+          "rationale": "Apple App Store Review Guidelines 2025 require account deletion (5.1.1(v)), Restore Purchases for IAP-enabled apps (3.1.1), Sign in with Apple where applicable (4.8), and Privacy Nutrition Label population (5.1.1). Pillar 7 enforces this aggregate set as a single last-mile gate.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        },
+        {
+          "standard": "Google Play Developer Policies / MASA 2025-2026",
+          "control": "Multiple — Account Management, Data Safety",
+          "rationale": "Google Play Developer Policies (2025-2026) require in-app account deletion, complete Data Safety section, and platform integrity attestation. Pillar 7 enforces the Android-specific subset of last-mile gates as a parallel rule to the Apple set.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "trace_id": "SEC-PILLAR-8-INCIDENT-RESPONSE",
+      "pillar": 8,
+      "pillar_name": "Incident Response & Disclosure",
+      "control_summary": "Defined severity classes, disclosure timelines (critical within 72 hours minimum), channels, and post-incident process. Tier 4/5 add regulator-specific notification timelines.",
+      "applicable_tiers": [1, 2, 3, 4, 5],
+      "external_standards": [
+        {
+          "standard": "ISO/IEC 27034-1:2011",
+          "control": "Application Security Management Process — Post-Deployment Phase",
+          "rationale": "ISO/IEC 27034-1 ASMP includes incident response and continuous improvement as required post-deployment activities. Pillar 8's defined severity classes, timelines, and channels operationalize the ASMP post-deployment requirements.",
+          "mapping_version": "1.0",
+          "mapping_authority": "intrinsic_code_internal_review",
+          "mapping_date": "2026-05-02"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+"This folder contains versioned mapping files referenced by the Intrinsic Code Validation Receipt and Security Constitution. The canonical mapping constitution_to_external_standards.json v1.0 ships with Constitution v0.4 and is consumed by the Validation Receipt Aggregator. Mapping files are immutable per version per Constitution v0.4 §5.4."
