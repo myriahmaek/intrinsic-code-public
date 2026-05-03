@@ -56,7 +56,10 @@ def verify_receipt(receipt: dict) -> tuple[bool, str]:
         return False, f"Signing-keys manifest is malformed: {e}."
 
     pub_key_pem = None
-    for entry in manifest.get("keys", []):
+    keys = manifest.get("keys", [])
+    if not isinstance(keys, list):
+        return False, "Signing-keys manifest is malformed: 'keys' must be a list."
+    for entry in keys:
         if entry.get("public_key_id") == key_id:
             pub_key_pem = entry.get("pem_format", "")
             break
@@ -69,13 +72,18 @@ def verify_receipt(receipt: dict) -> tuple[bool, str]:
     canonical = rfc8785.dumps(receipt_for_hash)
     recomputed_hash = "sha256:" + hashlib.sha256(canonical).hexdigest()
 
+    if not embedded_hash.startswith("sha256:"):
+        return False, "signed_payload_hash must start with 'sha256:'."
+
     if recomputed_hash != embedded_hash:
         return False, f"Hash mismatch: receipt was modified after signing.\n  embedded:    {embedded_hash}\n  recomputed:  {recomputed_hash}"
 
     # Verify the Ed25519 signature
     try:
         import base64
-        sig_bytes = base64.b64decode(embedded_sig_b64)
+        sig_bytes = base64.b64decode(embedded_sig_b64, validate=True)
+        if len(sig_bytes) != 64:
+            return False, f"Invalid Ed25519 signature length: expected 64 bytes, got {len(sig_bytes)}."
         pub_key = serialization.load_pem_public_key(pub_key_pem.encode("utf-8"))
         if not isinstance(pub_key, Ed25519PublicKey):
             return False, "Public key in manifest is not an Ed25519 key."

@@ -45,7 +45,7 @@ The `verifier/verify_receipt.py` script implements the inverse of the signing pr
 6. **Compares the recomputed hash** against the `signed_payload_hash` embedded in the Receipt's signature block. Mismatch means the Receipt was modified after signing.
 7. **Verifies the Ed25519 signature** against the recomputed hash using the public key. Mismatch means the signature is invalid (wrong key, or signature was tampered with).
 
-If both checks pass, the Receipt is genuine.
+If both checks pass, the Receipt matches the signed payload hash and was signed by the published Intrinsic Code key.
 
 ---
 
@@ -65,7 +65,7 @@ The verifier resolves the public key from the manifest in this repository, so as
 
 | Output | Meaning |
 |--------|---------|
-| `✗ Hash mismatch` | The Receipt was modified after signing. Any field change (even whitespace) triggers this. |
+| `✗ Hash mismatch` | The Receipt data changed after signing. Formatting-only changes such as whitespace or key order should not trigger this because Receipts are canonicalized with RFC 8785 before hashing. |
 | `✗ Signature does not verify` | The hash matched but the cryptographic signature is invalid. Likely tampering or a wrong public key. |
 | `✗ public_key_id not found in manifest` | The Receipt was signed by a key Intrinsic Code does not publish. Either the key was rotated and is not yet in the manifest, or the Receipt is not from Intrinsic Code at all. |
 | `✗ Receipt was emitted in 'unsigned' mode` | The Receipt is a placeholder from a pre-Phase-5-Commit-3 build. These exist in early development repositories but should not appear on production deliverables. |
