@@ -14,13 +14,17 @@ The proof layer is public. The engine is private.
 
 ```
 intrinsic-code-public/
+├── boards/                          Break the Line adversarial catch boards (published as generated)
+├── boards/sqscm/                    Public SQSCM factory-health board (structure reserved)
 ├── examples/sample_receipts/        Real signed Validation Receipts from canary builds
+├── examples/sample_receipts/golden/ Factory-golden samples (test-keypair-signed, zero customer content)
 ├── keys/prod/                       Public signing keys (Ed25519)
 ├── .well-known/signing-keys.json    Public key manifest
 ├── mappings/                        Constitution → external standards mapping
 ├── ledger/                          Live KPI ledger (RUN_LEDGER.csv)
 ├── verifier/                        Standalone verification script
 ├── VERIFY.md                        How to verify a Receipt yourself
+├── PROOF_BOUNDARY.md                What this repo may show, and what it must never expose
 └── LICENSE                          MIT
 ```
 
@@ -50,7 +54,32 @@ The first public cryptographically-signed Intrinsic Code Validation Receipt is i
 examples/sample_receipts/focusblock-android-canary.json
 ```
 
-To verify it yourself, see [VERIFY.md](VERIFY.md).
+To verify it yourself, see [VERIFY.md](VERIFY.md), or use the hosted
+verifier:
+
+```
+POST https://api.intrinsiccode.com/api/v1/verify
+Content-Type: application/json
+
+<the receipt JSON>
+```
+
+---
+
+## Adversarial proof: Break the Line
+
+This is also Intrinsic Code's public proof repository: we publish our
+adversarial testing results, sample receipts, and factory health metrics
+here. We deliberately inject defects into our own pipeline and record
+whether every gate catches them — per control, per model, over repeated
+runs. The aggregated catch boards land under [`boards/`](boards/) as the
+factory generates them; the public SQSCM factory-health board follows
+under `boards/sqscm/`.
+
+We don't ask you to trust our controls. We publish the board. What may be
+published here — and what never is (customer code, signing secrets,
+prompts, bypass recipes) — is governed by
+[PROOF_BOUNDARY.md](PROOF_BOUNDARY.md).
 
 ---
 

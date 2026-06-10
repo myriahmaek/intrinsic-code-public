@@ -1,0 +1,48 @@
+{
+  "artifact_version": "0.1.0",
+  "build_order_id": "golden-lane-ws",
+  "generated_at": "2026-06-09T00:01:00+00:00",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "parity": {
+    "status": "enforced",
+    "verdict": "pass",
+    "decomposition_present": true,
+    "category_results": {
+      "feature_presence": "pass",
+      "auth_behavior": "pass",
+      "data_model_retention": "pass",
+      "security_critical": "pass",
+      "receipt_evidence_coverage": "pass",
+      "screen_inventory": "not_expressible",
+      "primary_actions": "not_expressible",
+      "validation_error_states": "not_expressible"
+    },
+    "findings": [],
+    "upstream_completeness": [],
+    "note": "deterministic parity floor enforced over 2 lanes (golden fixture)"
+  },
+  "lane_receipts": [
+    {
+      "platform": "android",
+      "item_marker": "1 of 2",
+      "signed_payload_hash": "sha256:49b9c1ecb50c45c2ddd50753c02dfea4dc79a405ac19939e611016e1457ef354",
+      "public_key_id": "intrinsiccode-test-2026-Q2"
+    },
+    {
+      "platform": "ios",
+      "item_marker": "2 of 2",
+      "signed_payload_hash": "sha256:67d2da63d4920798cfc1dca37bab036d93b65cb217556bf3248aa1cc03e8dee6",
+      "public_key_id": "intrinsiccode-test-2026-Q2"
+    }
+  ],
+  "signature": {
+    "algorithm": "Ed25519-test",
+    "canonicalization": "RFC 8785 (JCS)",
+    "public_key_id": "intrinsiccode-test-2026-Q2",
+    "signed_payload_hash": "sha256:eb7d3e376624b59036c0b0912742435a49323bbff295abbe446082074eddcba2",
+    "signature": "hVD8/8B/EOvsmSVF8b8YUYdSPIe2teffz1DCDGha1X4H0wJofxSKKzTvqGFIPL0cg13Oxd8nxH+jZ2/G20ypDw=="
+  }
+}

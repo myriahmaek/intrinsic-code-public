@@ -1,0 +1,374 @@
+{
+  "receipt_version": "0.1.12",
+  "constitution_version": "0.6",
+  "blueprint_id": "_phase_d_golden_ws",
+  "app_name": "TestApp",
+  "app_tier": 1,
+  "platforms": [
+    "android"
+  ],
+  "generated_at": "2026-06-06T00:01:00+00:00",
+  "enforcement_summary": {
+    "total_gates_fired": 18,
+    "gates_passed": 18,
+    "gates_with_warnings": 0,
+    "gates_failed": 0,
+    "tier_completeness": "fully_satisfied"
+  },
+  "constitutional_traces": [
+    {
+      "trace_id": "SEC-001",
+      "pillar": 1,
+      "pillar_name": "Security-by-Construction",
+      "control_text": "Test control.",
+      "files_implementing": [
+        "TestApp-Android/SomeFile.kt"
+      ],
+      "external_standards_satisfied": []
+    }
+  ],
+  "external_standards_summary": {
+    "owasp_masvs_controls_satisfied": [],
+    "owasp_mastg_test_cases_addressed": [],
+    "fedramp_control_implementations_addressed": [],
+    "cmmc_practice_implementations_addressed": [],
+    "niap_sfr_attestation_templates_generated": []
+  },
+  "per_surface_evidence": {
+    "schema_version": "0.1.0",
+    "surfaces": [
+      {
+        "surface_field": "sensitive_data_types",
+        "blueprint_path": "security_manifest.sensitive_data_types",
+        "entries_count": 0,
+        "entries": []
+      },
+      {
+        "surface_field": "local_auth_surfaces",
+        "blueprint_path": "security_manifest.local_auth_surfaces",
+        "entries_count": 0,
+        "entries": []
+      },
+      {
+        "surface_field": "sensitive_operations",
+        "blueprint_path": "security_manifest.sensitive_operations",
+        "entries_count": 0,
+        "entries": []
+      },
+      {
+        "surface_field": "ipc_surfaces",
+        "blueprint_path": "security_manifest.ipc_surfaces",
+        "entries_count": 0,
+        "entries": []
+      },
+      {
+        "surface_field": "developer_controlled_endpoints",
+        "blueprint_path": "security_manifest.developer_controlled_endpoints",
+        "entries_count": 0,
+        "entries": []
+      },
+      {
+        "surface_field": "external_processor_surfaces",
+        "blueprint_path": "security_manifest.external_processor_surfaces",
+        "entries_count": 0,
+        "entries": []
+      },
+      {
+        "surface_field": "webview_surfaces",
+        "blueprint_path": "security_manifest.webview_discipline.webview_surfaces",
+        "entries_count": 0,
+        "entries": []
+      },
+      {
+        "surface_field": "sensitive_ui_surfaces",
+        "blueprint_path": "security_manifest.ui_integrity.sensitive_ui_surfaces",
+        "entries_count": 0,
+        "entries": []
+      }
+    ],
+    "applicability_evaluations": [
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-AUTH-1",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=3 (unsatisfied; actual_tier=1) | conditions_logic='all': technical.auth_flow != 'none' -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-AUTH-2",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=3 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.local_auth_surfaces != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "local_auth_surfaces"
+        ]
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-AUTH-3",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=3 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.sensitive_operations != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "sensitive_operations"
+        ]
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-CODE-1",
+        "applicable": true,
+        "tier_floor_satisfied": true,
+        "applicability_reason": "tier_floor=1 (satisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 1 -> pass | applicable=True",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-CODE-2",
+        "applicable": true,
+        "tier_floor_satisfied": true,
+        "applicability_reason": "tier_floor=1 (satisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 1 -> pass | applicable=True",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-CODE-3",
+        "applicable": true,
+        "tier_floor_satisfied": true,
+        "applicability_reason": "tier_floor=1 (satisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 1 -> pass | applicable=True",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-CODE-4",
+        "applicable": true,
+        "tier_floor_satisfied": true,
+        "applicability_reason": "tier_floor=1 (satisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 1 -> pass | applicable=True",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-CRYPTO-1",
+        "applicable": false,
+        "tier_floor_satisfied": true,
+        "applicability_reason": "tier_floor=1 (satisfied; actual_tier=1) | conditions_logic='all': security_manifest.crypto_inventory != [] -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-CRYPTO-2",
+        "applicable": false,
+        "tier_floor_satisfied": true,
+        "applicability_reason": "tier_floor=1 (satisfied; actual_tier=1) | conditions_logic='all': security_manifest.crypto_inventory != [] -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-NETWORK-1",
+        "applicable": true,
+        "tier_floor_satisfied": true,
+        "applicability_reason": "tier_floor=1 (satisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 1 -> pass | applicable=True",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-NETWORK-2",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=4 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.developer_controlled_endpoints != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "developer_controlled_endpoints"
+        ]
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-PLATFORM-1",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.ipc_surfaces != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "ipc_surfaces"
+        ]
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-PLATFORM-2",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.webview_discipline.status == 'active' -> fail; security_manifest.webview_discipline.webview_surfaces != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "webview_surfaces"
+        ]
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-PLATFORM-3",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.ui_integrity.status == 'active' -> fail; security_manifest.ui_integrity.sensitive_ui_surfaces != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "sensitive_ui_surfaces"
+        ]
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-PRIVACY-1",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.external_processor_surfaces != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "external_processor_surfaces"
+        ]
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-PRIVACY-2",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 2 -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-PRIVACY-3",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.external_processor_surfaces != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "external_processor_surfaces"
+        ]
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-PRIVACY-4",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 2 -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-RESILIENCE-1",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=3 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 3 -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-RESILIENCE-2",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 2 -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-RESILIENCE-3",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=3 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 3 -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-RESILIENCE-4",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.app_tier >= 2 -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-STORAGE-1",
+        "applicable": false,
+        "tier_floor_satisfied": true,
+        "applicability_reason": "tier_floor=1 (satisfied; actual_tier=1) | conditions_logic='any': security_manifest.data_retention_policies != [] -> fail; security_manifest.secrets_inventory != [] -> fail | applicable=False",
+        "evidence_surface_fields": []
+      },
+      {
+        "external_standard": "OWASP-MASVS",
+        "standard_version": "2.1.0",
+        "control_id": "MASVS-STORAGE-2",
+        "applicable": false,
+        "tier_floor_satisfied": false,
+        "applicability_reason": "tier_floor=2 (unsatisfied; actual_tier=1) | conditions_logic='all': security_manifest.sensitive_data_types != [] -> fail | applicable=False",
+        "evidence_surface_fields": [
+          "sensitive_data_types"
+        ]
+      }
+    ]
+  },
+  "active_policy_context": {
+    "resolution_status": "not_resolved",
+    "schema_version": "unknown",
+    "constitution_version": "unknown",
+    "app_tier": null,
+    "artifact": "active_policy_context.json",
+    "artifact_sha256": null,
+    "resolution_note": "No active-policy companion package was resolved for this workspace (pre-Memo-A-Stage-2 generation or standalone aggregator run)."
+  },
+  "release_status": "released",
+  "limitations": {
+    "validation_scope": "Receipt validates enforcement gates fired during generation. Does not certify runtime behavior, third-party dependency security, or post-generation modifications.",
+    "tier_scope": "This receipt is for Tier 1 (no PII, no auth, local-only) generation. Higher-tier features (E2EE, anti-debug, audit logging, NIAP attestation templates) were not invoked at this tier.",
+    "external_dependencies_unverified": [],
+    "non_claims_reference": "https://intrinsiccode.com/docs/receipts#non-claims"
+  },
+  "pipeline_content_hashes": {
+    "algorithm": "sha256",
+    "artifacts": [
+      {
+        "stage": "scribe",
+        "artifact": "blueprint.json",
+        "sha256": "459dae71bed8ccdb8d9f8b0797a97f80a57480685536c24fbb890f7c6215bbfc"
+      },
+      {
+        "stage": "scaffolder",
+        "artifact": "scaffolder_output.json",
+        "sha256": "6dabc8e0fa76c18a0d466e3300ca974994988b4d7ee5efc3227ebb1afb3e6264"
+      },
+      {
+        "stage": "coder",
+        "artifact": "coder_output/TestApp-Android/SomeFile.kt",
+        "sha256": "92e6f74ba8a0c5d050565b75c65485109350d164255f71ffdd1a80b9c401caaf"
+      }
+    ]
+  },
+  "independent_audit_attestation": {
+    "independently_audited": true,
+    "audit_vantage": "single_model_family",
+    "auditor_independent_of_author": false
+  },
+  "signature": {
+    "algorithm": "Ed25519-test",
+    "canonicalization": "RFC 8785 (JCS)",
+    "public_key_id": "intrinsiccode-test-2026-Q2",
+    "signed_payload_hash": "sha256:b1e242a8c02ef8c8bfe6e99a0feb0117ee6f15d6a4be381eb891df651f99e1f8",
+    "signature": "uAe/ZHE7oLGmObkRRmqzZGXuIfjcho/mZmf3PthcrcqXknWIUWmQxBlJbLlFeiOBbyJ4jbETawiPcJK05QyOCQ=="
+  }
+}
