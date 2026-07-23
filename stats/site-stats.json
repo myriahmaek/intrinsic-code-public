@@ -1,14 +1,14 @@
 {
-  "tests_passing": 996,
+  "tests_passing": 3817,
   "tests_failing": 0,
-  "tests_skipped": 3,
-  "last_updated": "2026-05-11T01:14:58Z",
-  "constitution_version": "v0.4",
-  "architecture_spec_version": "v2.10.2",
-  "agents_built": 7,
+  "tests_skipped": 5,
+  "last_updated": "2026-07-23T04:19:49Z",
+  "constitution_version": "v0.7",
+  "architecture_spec_version": "v2.11.2",
+  "agents_built": 53,
   "agents_prompt_locked": 0,
   "agents_designed_only": 2,
-  "validation_receipt_version": "v0.1.2",
+  "validation_receipt_version": "v0.1.12",
   "first_signed_receipt_date": "2026-05-03",
   "public_repo_url": "https://github.com/myriahmaek/intrinsic-code-public"
 }
